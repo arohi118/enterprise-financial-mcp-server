@@ -6,7 +6,7 @@
 
 A production-ready **Model Context Protocol (MCP)** server built in Python that exposes relational financial databases and internal banking REST APIs to LLM agents with strict security guardrails[cite: 1].
 
-Designed for enterprise banking and asset management contexts, this server enforces **AST-based SQL mutation blocking**, schema-aware context injection, and paginated data extraction to safeguard enterprise ledgers while preventing token window exhaustion[cite: 1].
+Designed for enterprise banking and asset management contexts, this server enforces **AST-based SQL mutation blocking**, schema-aware context injection, and paginated data extraction to safeguard enterprise ledgers while preventing token window exhaustion.
 
 ---
 
