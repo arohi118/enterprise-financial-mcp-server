@@ -75,3 +75,45 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+3. Spin Up Local Services (PostgreSQL)
+Bash
+docker compose up -d
+4. Run the MCP Server
+Bash
+export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/finance_db"
+python -m app.server
+🔌 Connecting to Claude Desktop / Cursor
+Add the server configuration to your claude_desktop_config.json:
+
+JSON
+{
+  "mcpServers": {
+    "enterprise-financial-mcp": {
+      "command": "python",
+      "args": [
+        "-m",
+        "app.server"
+      ],
+      "cwd": "/path/to/enterprise-financial-mcp-server",
+      "env": {
+        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/finance_db"
+      }
+    }
+  }
+}
+🔒 Security Compliance
+This server enforces strict compliance measures designed for regulated financial institutions[cite: 1]:
+
+Parameterized/Read-Only Execution: Only SELECT, SHOW, and DESCRIBE statement types are processed. Any transaction mutation attempts return an immediate SecurityViolationError[cite: 1].
+
+Access Scoping: Database credentials used by the MCP server should be bounded to a restricted read-only role with access to required schemas only[cite: 1].
+
+👤 Author
+Arohi Rup
+
+LinkedIn: linkedin.com/in/arohirup
+
+GitHub: @arohi118
+
+
